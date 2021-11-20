@@ -14,7 +14,7 @@ app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
 app.secrect_key = os.environ.get("SECRECT_KEY")
 
 
-mong = PyMongo(app)
+mongo = PyMongo(app)
 
 
 @app.route("/")
