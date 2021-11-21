@@ -6,8 +6,8 @@ body {
 }
 
 main {
-    flex: 1.0 auto;
-}
+    flex: 1 0 auto;
+  }
 
 nav {
     background-color: #1F4743;
@@ -31,5 +31,9 @@ nav {
 .social {
     color: white;
     padding-right: 15px;
-    padding-top: 15px;
+    padding-top: 20px;
+}
+
+.hero-image {
+    width: 100%;
 }
