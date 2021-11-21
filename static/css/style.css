@@ -20,7 +20,7 @@ nav {
 }
 
 .mobile-menu {
-    margin-left: 15px;
+    margin-right: 15px;
 }
 
 .footer-copyright {
@@ -33,8 +33,3 @@ nav {
     padding-right: 15px;
     padding-top: 20px;
 }
-
-.parallax-container {
-    height: 400px;
-    object-fit: contain;
-  }
