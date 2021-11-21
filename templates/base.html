@@ -23,7 +23,7 @@
                 <a href="#!" class="brand-logo center"><i class="material-icons">local_dining</i>Foodie-tastic!</a>
                 <a href="#" data-target="dropdown1" class="dropdown-trigger right"><i class="material-icons mobile-menu hide-on-large-only">menu</i></a>
                 <ul class="right hide-on-med-and-down">
-                    <li><a href="{{ url_for('recipes') }}" >Home</a></li>
+                    <li><a href="{{ url_for('get_recipe') }}" >Home</a></li>
                     {% if session.user %}
                         <li><a href="{{ url_for('profile', username=session['user']) }}">Profile</a></li>
                         <li><a href="">Recipes</a></li>
@@ -37,7 +37,7 @@
             </nav>
 
             <ul id="dropdown1" class="dropdown-content">
-                <li><a href="{{ url_for('recipes') }}" >Home</a></li>
+                <li><a href="{{ url_for('get_recipe') }}" >Home</a></li>
                 {% if session.user %}
                         <li><a href="{{ url_for('profile', username=session['user']) }}">Profile</a></li>
                         <li><a href="">Recipes</a></li>
