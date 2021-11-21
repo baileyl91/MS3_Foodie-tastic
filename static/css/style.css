@@ -1,3 +1,18 @@
+body {
+    background-color: #32746D;
+    
+}
 
+nav {
+    background-color: #1F4743;
+    color: white;
+}
 
-  
+.brand-logo {
+    color: white;
+    margin-left: 15px;
+}
+
+.mobile-menu {
+    margin-left: 15px;
+} 
