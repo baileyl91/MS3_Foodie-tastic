@@ -23,9 +23,9 @@
                 <a href="#!" class="brand-logo center"><i class="material-icons">local_dining</i>Foodie-tastic!</a>
                 <a href="#" data-target="dropdown1" class="dropdown-trigger right"><i class="material-icons mobile-menu hide-on-large-only">menu</i></a>
                 <ul class="right hide-on-med-and-down">
-                    <li><a href="base.html" >Home</a></li>
-                    <li><a href="{{ url_for('register') }} ">Recipes</a></li>
-                    <li><a href=" ">Register</a></li>
+                    <li><a href="/templates/base.html" >Home</a></li>
+                    <li><a href="">Recipes</a></li>
+                    <li><a href="{{ url_for('register') }} ">Register</a></li>
                     <li><a href=" ">Sign In</a></li>
                 </ul>
                 </div>
@@ -34,7 +34,7 @@
             <ul id="dropdown1" class="dropdown-content">
                 <li><a href=" ">Home</a></li>
                 <li><a href=" ">Recipes</a></li>
-                <li><a href="{{ url_for('register') }} ">Recipes</a></li>
+                <li><a href="{{ url_for('register') }} ">Register</a></li>
                 <li><a href=" ">Sign In</a></li>
               </ul>
             
