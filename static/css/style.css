@@ -1,6 +1,12 @@
 body {
     background-color: #32746D;
-    
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+main {
+    flex: 1.0 auto;
 }
 
 nav {
@@ -15,4 +21,15 @@ nav {
 
 .mobile-menu {
     margin-left: 15px;
-} 
+}
+
+.footer-copyright {
+    background-color: #1F4743;
+    color: white;
+}
+
+.social {
+    color: white;
+    padding-right: 15px;
+    padding-top: 15px;
+}
