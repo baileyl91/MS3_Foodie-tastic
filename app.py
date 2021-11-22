@@ -94,12 +94,16 @@ def logout():
     return redirect(url_for("login"))
 
 
-
-
 @app.route("/get_recipe")
 def get_recipe():
     recipe = list(mongo.db.recipes.find())
     return render_template("recipes.html", recipes=recipe)
+
+
+@app.route("/add_recipe")
+def add_recipe():
+    return render_template("add_recipe.html")
+
 
 if __name__ == "__main__":
     app.secret_key = 'super secret key'
