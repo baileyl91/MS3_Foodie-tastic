@@ -22,10 +22,13 @@ mongo = PyMongo(app)
 
 
 @app.route("/")
-@app.route("/get_recipe")
-def get_recipe():
-    recipes = mongo.db.recipes.find()
-    return render_template("home.html", recipes=recipes)
+@app.route("/home")
+def home():
+    """
+    First page to load when user registers to site
+    """
+    quotes = list(mongo.db.quotes.find())
+    return render_template("home.html", quotes=quotes)
 
 
 @app.route("/register", methods=["GET", "POST"])
@@ -90,6 +93,13 @@ def logout():
     session.pop("user")
     return redirect(url_for("login"))
 
+
+
+
+@app.route("/get_recipe")
+def get_recipe():
+    recipe = list(mongo.db.recipes.find())
+    return render_template("recipes.html", recipes=recipe)
 
 if __name__ == "__main__":
     app.secret_key = 'super secret key'
