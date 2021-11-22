@@ -93,6 +93,7 @@ def logout():
 
 if __name__ == "__main__":
     app.secret_key = 'super secret key'
+    
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),
             debug=True)
