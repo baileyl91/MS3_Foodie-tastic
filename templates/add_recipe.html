@@ -4,46 +4,47 @@
     <h3 class=" white-text center"> Add Recipe</h3>
 
     <div class="container white">
-    <div class="row">
-        <form class="col s12">
+    <div class="row card-panel grey lighten-5">
+        <form class="col s12" method="POST" action="">
           <div class="row">
-            <div class="input-field col s12 ">
+            <div class="input-field col s12">
               
-              <input type="text" class="validate">
-              <label >Recipe Name: </label>
+              <input id="recipe_name" name="recipe_name" minlength="5" maxlength="50" type="text" class="validate" required>
+              <label for="recipe_name">Recipe Name: </label>
             </div>
             <div class="input-field col s6">
               
-                <input type="text" class="validate">
-                <label >Serves: </label>
+                <input id="serves" name="serves" minlength="1" maxlength="2" type="text" class="validate" required>
+                <label for="serves">Serves: </label>
             </div>
             <div class="input-field col s6">
               
-                <input type="text" class="validate">
-                <label >Cooking Time: </label>
+                <input id="cooking_time" name="cooking_time" type="text" class="validate" required>
+                <label for="cooking_time" >Cooking Time: </label>
               </div>
+          
+          <div class="input-field col s12">
+              
+            <input id="image" name="image" type="text" class="validate">
+            <label for="image">Image Link (URL)</label>
           </div>
           <div class="input-field col s12">
               
-            <input type="text" class="validate">
-            <label >Image Link (URL)</label>
+            <textarea id="description" name="description" minlength="5" maxlength="150" type="text" class="materialize-textarea validate" required></textarea>
+            <label for="description">Description: </label>
           </div>
           <div class="input-field col s12">
               
-            <input type="text" class="validate">
-            <label >Description: </label>
+            <textarea id="ingredients" name="ingredients"  minlength="5" maxlength="150"  type="text" class="materialize-textarea validate" required></textarea>
+            <label for="ingredients">Ingriedients:</label>
           </div>
           <div class="input-field col s12">
               
-            <input type="text" class="validate">
-            <label >Ingriedients:</label>
-          </div>
-          <div class="input-field col s12">
-              
-            <input type="text" class="validate">
-            <label >Steps:</label>
+            <textarea id="steps" name="steps" type="text" class="materialize-textarea validate" required></textarea>
+            <label for="steps">Steps:</label>
           </div>
         </form>
+      </div>
       </div>
       </div>
 
