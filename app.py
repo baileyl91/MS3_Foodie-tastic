@@ -97,7 +97,7 @@ def logout():
 @app.route("/get_recipe")
 def get_recipe():
     recipe = list(mongo.db.recipes.find())
-    return render_template("recipes.html", recipes=recipe)
+    return render_template("recipes_collection.html", recipes=recipe)
 
 
 @app.route("/add_recipe", methods=["GET", "POST"])
@@ -119,6 +119,17 @@ def add_recipe():
     
     recipe = mongo.db.recipes.find().sort("recipe_name", 1)
     return render_template("add_recipe.html", recipes=recipe)
+
+
+@app.route("/recipe/<recipes_id>")
+def recipe(recipes_id):
+    if 'username' in session:
+        return render_template('recipe.html', username=session['username'],
+        recipe=mongo.db.recipes.find_one({'_id': ObjectId(recipes_id)}))
+    else:
+        return render_template('recipe.html', username='',
+        recipe=mongo.db.recipes.find_one({'_id': ObjectId(recipes_id)}))
+
 
 
 if __name__ == "__main__":

@@ -10,7 +10,7 @@
         <div class="col s12 m3">
         <div class="card">
             <div class="card-image">
-            <img src={{ recipes.image}}>
+            <img src={{ recipes.image }}>
             <span class="card-title white-text teal darken-3 ">{{ recipes.recipe_name }}</span>
             </div>
             <div class="card-content">
@@ -19,7 +19,7 @@
                 <p>by: {{ recipes.created_by }}</p>
             </div>
             <div class="card-action">
-            <a href="#">See full recipe:</a>
+            <a href="{{url_for('recipe', recipes_id=recipes._id)}}">See full recipe:</a>
             </div>
         </div>
         </div>
