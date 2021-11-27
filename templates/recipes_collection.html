@@ -3,50 +3,63 @@
 
 <h3 class="recipe">Recipe Collection</h3>
 
-<div class="row card-panel grey lighten-5">
-    <form action="{{ url_for('search') }}" method="post" class="col s12">
-        <div class="row valign-wrapper center-align">
-            <div class="input-field col s12 m8">
-                <i class="fas fa search prefix light-blue-text text-darken-4"></i>
-                <input type="text" name="query" id="query" minlength="3" class="validate" required>
-                <label for="query">Search Recipes</label>
-            </div>
-            <div class="col s12 m4">
-                <a href="{{ url_for('get_recipe') }}" class="red btn">Reset</a>
-                <button type="submit" class="light-blue darken-1 btn">
-                    <i class="fas fa-search left"></i>Search
-                </button>
-            </div>
-        </div>
-    </form>
-</div>
 
-{% if recipes|length > 0 %}
+
 
 <div class="container">
 
-<div class="row">
-    {% for recipes in recipes %}
-        <div class="col s12 m3">
-        <div class="card">
-            <div class="card-image">
-            <img src={{ recipes.image }}>
-            <span class="card-title white-text teal darken-3 ">{{ recipes.recipe_name }}</span>
+    <div class="row card-panel grey lighten-5">
+        <form action="{{ url_for('search') }}" method="post" class="col s12">
+            <div class="row valign-wrapper center-align">
+                <div class="input-field col s12 m8">
+                    <i class="fas fa search prefix light-blue-text text-darken-4"></i>
+                    <input type="text" name="query" id="query" minlength="3" class="validate" required>
+                    <label for="query">Search Recipes</label>
+                </div>
+                <div class="col s12 m4">
+                    <a href="{{ url_for('get_recipe') }}" class="red btn">Reset</a>
+                    <button type="submit" class="teal darken-1 btn">
+                        <i class="fas fa-search left"></i>Search
+                    </button>
+                </div>
             </div>
-            <div class="card-content">
-            <p>Cooking Time: {{ recipes.cooking_time }}</p>
-                <p>Serves: {{ recipes.serves }}</p>
-                <p>by: {{ recipes.created_by }}</p>
+        </form>
+    </div>
+    
+    {% if recipes|length > 0 %}
+
+    <div class="row">
+        {% for recipes in recipes %}
+            <div class="col s12 m3">
+            <div class="card">
+                <div class="card-image">
+                <img src={{ recipes.image }}>
+                <span class="card-title white-text teal darken-3 ">{{ recipes.recipe_name }}</span>
+                </div>
+                <div class="card-content">
+                <p>Cooking Time: {{ recipes.cooking_time }}</p>
+                    <p>Serves: {{ recipes.serves }}</p>
+                    <p>by: {{ recipes.created_by }}</p>
+                </div>
+                <div class="card-action">
+                <a href="{{url_for('recipe', recipes_id=recipes._id)}}">See full recipe:</a>
+                </div>
             </div>
-            <div class="card-action">
-            <a href="{{url_for('recipe', recipes_id=recipes._id)}}">See full recipe:</a>
             </div>
-        </div>
-        </div>
-    {% endfor %}
-  </div>
+        {% endfor %}
+    </div>
+  
 </div>
+
+<div class="container pagination-container center-align">
+    {{ pagination.info }}
+    {{ pagination.links }}
+  </div>
+
 {% else %}
 <h3 class="recipe">No Results Found</h3>
 {% endif %}
+
+
+
 {% endblock %}

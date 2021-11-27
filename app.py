@@ -4,6 +4,7 @@ from flask import (
     redirect, request, session, url_for)
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
+from flask_paginate import Pagination
 from werkzeug.security import generate_password_hash, check_password_hash
 if os.path.exists("env.py"):
     import env
@@ -19,6 +20,14 @@ app.config['SESSION_TYPE'] = 'filesystem'
 
 
 mongo = PyMongo(app)
+
+
+def collection(recipes, offset=0, per_page=8):
+    """
+    Give pagination information about recipes
+    """
+    recipes = list(mongo.db.recipes.find())
+    return recipes[offset: offset + per_page]
 
 
 @app.route("/")
@@ -97,7 +106,20 @@ def logout():
 @app.route("/get_recipe")
 def get_recipe():
     recipe = list(mongo.db.recipes.find())
-    return render_template("recipes_collection.html", recipes=recipe)
+   # Pagination
+    # pylint: disable=unbalanced-tuple-unpacking
+    # page, per_page, offset = get_page_args(page_parameter='page',
+    #                                        per_page_parameter='per_page')
+    page = int(request.args.get('page', 1))
+
+    per_page = 8
+
+    offset = (page - 1) * per_page
+    # pylint: enable=unbalanced-tuple-unpacking
+    total = len(recipe)
+    pagination_recipes = collection(recipe, offset=offset, per_page=8)
+    pagination = Pagination(page=page, per_page=8, total=total)
+    return render_template("recipes_collection.html", recipes=pagination_recipes, page=page, per_page=per_page, pagination=pagination)
 
 
 @app.route("/add_recipe", methods=["GET", "POST"])
@@ -160,11 +182,41 @@ def delete_recipe(recipes_id):
     return redirect(url_for("get_recipe"))
 
 
+def search_recipes(offset=0, per_page=8):
+    query = request.form.get("query")
+    recipes = list(mongo.db.recipes.find({"$text": {"$search": query}}))
+    return recipes[offset: offset + per_page]
+
+
 @app.route("/search", methods=["GET", "POST"])
 def search():
+    """
+    searches DB for recipes that user types into search field.
+    """
     query = request.form.get("query")
-    recipe = list(mongo.db.recipes.find({"$text": {"$search": query}}))
-    return render_template("recipes_collection.html", recipes=recipe)
+    recipes = list(mongo.db.recipes.find({"$text": {"$search": query}}))
+    # Pagination
+    # pylint: disable=unbalanced-tuple-unpacking
+    # page, per_page, offset = get_page_args(page_parameter='page',
+    #                                        per_page_parameter='per_page')
+    page = int(request.args.get('page', 1))
+    per_page = 8
+    offset = (page - 1) * per_page
+    # pylint: enable=unbalanced-tuple-unpacking
+    total = len(recipes)
+    pagination_recipes = search_recipes(offset=offset, per_page=8)
+    pagination = Pagination(page=page, per_page=8, total=total)
+    
+    return render_template(
+        "recipes_collection.html", recipes=pagination_recipes,
+        page=page, per_page=per_page, pagination=pagination)
+
+
+
+
+    
+
+
 
 
 if __name__ == "__main__":
