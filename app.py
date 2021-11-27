@@ -160,6 +160,13 @@ def delete_recipe(recipes_id):
     return redirect(url_for("get_recipe"))
 
 
+@app.route("/search", methods=["GET", "POST"])
+def search():
+    query = request.form.get("query")
+    recipe = list(mongo.db.recipes.find({"$text": {"$search": query}}))
+    return render_template("recipes_collection.html", recipes=recipe)
+
+
 if __name__ == "__main__":
     app.secret_key = 'super secret key'
     
