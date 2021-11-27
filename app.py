@@ -153,6 +153,13 @@ def edit_recipe(recipes_id):
     return render_template("edit_recipe.html", recipes=recipe)
 
 
+@app.route("/delete_recipe/<recipes_id>")
+def delete_recipe(recipes_id):
+    mongo.db.recipes.remove({"_id": ObjectId(recipes_id)})
+    flash("Recipe Successfully Deleted")
+    return redirect(url_for("get_recipe"))
+
+
 if __name__ == "__main__":
     app.secret_key = 'super secret key'
     

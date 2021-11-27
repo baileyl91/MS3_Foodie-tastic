@@ -27,7 +27,7 @@
                         <p>Are you sure you want to delete this recipe? <p>
                     </div>
                     <div class="modal-footer">
-                        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Delete</a>
+                        <a href="{{ url_for('delete_recipe', recipes_id=recipe._id) }}" class="modal-close waves-effect waves-green btn-flat">Delete</a>
                     </div>
                 </div>
             </div>
