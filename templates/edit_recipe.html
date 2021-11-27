@@ -9,40 +9,50 @@
           <div class="row">
             <div class="input-field col s12">
               
-              <input id="recipe_name" name="recipe_name" minlength="5" maxlength="50" type="text" class="validate" required>
+              <input id="recipe_name" name="recipe_name" minlength="5" maxlength="50" value="{{ recipes.recipe_name }}" type="text" class="validate" required>
               <label for="recipe_name">Recipe Name: </label>
             </div>
             <div class="input-field col s6">
               
-                <input id="serves" name="serves" minlength="1" maxlength="2" type="text" class="validate" required>
+                <input id="serves" name="serves" minlength="1" maxlength="2" value="{{ recipes.serves }}" type="text" class="validate" required>
                 <label for="serves">Serves: </label>
             </div>
             <div class="input-field col s6">
               
-                <input id="cooking_time" name="cooking_time" type="text" class="validate" required>
+                <input id="cooking_time" name="cooking_time" value="{{ recipes.cooking_time }}" type="text" class="validate" required>
                 <label for="cooking_time" >Cooking Time: </label>
               </div>
           
           <div class="input-field col s12">
               
-            <input id="image" name="image" type="text" class="validate">
+            <input id="image" name="image" value="{{ recipes.image }}" type="text" class="validate">
             <label for="image">Image Link (URL)</label>
           </div>
           <div class="input-field col s12">
               
-            <textarea id="description" name="description" minlength="5" maxlength="150" type="text" class="materialize-textarea validate" required></textarea>
+            <textarea id="description" name="description" minlength="5" maxlength="150" type="text" class="materialize-textarea validate" required>
+              {{- recipes.description -}}
+            </textarea>
             <label for="description">Description: </label>
           </div>
           <div class="input-field col s12">
               
-            <textarea id="ingredients" name="ingredients"  minlength="5" maxlength="150"  type="text" class="materialize-textarea validate" required></textarea>
+            <textarea id="ingredients" name="ingredients"  minlength="5" maxlength="150" type="text" class="materialize-textarea validate" required>
+              {{- recipes.ingredients -}}
+            </textarea>
             <label for="ingredients">Ingriedients:</label>
           </div>
           <div class="input-field col s12">
               
-            <textarea id="steps" name="steps" type="text" class="materialize-textarea validate" required></textarea>
+            <textarea id="steps" name="steps" type="text" class="materialize-textarea validate" required>
+              {{- recipes.steps -}}
+            </textarea>
             <label for="steps">Steps:</label>
           </div>
+          <!-- cancel button -->
+          <a href="{{ url_for('get_recipe') }}" class="btn-large red text-shadow right">
+            Cancel <i class="fas fa-times-circle right"></i>
+        </a>
           <button class="btn waves-effect waves-light btn-large right" type="submit" name="action">Edit Recipe
             <i class="material-icons right">send</i>
           </button>
