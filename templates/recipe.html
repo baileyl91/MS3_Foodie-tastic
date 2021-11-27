@@ -17,7 +17,7 @@
                 <textarea class="materialize-textarea">{{recipe.steps}}</textarea>
                 {% if username == recipe.recipe_entered_by %}
                 {% endif %}
-                <a class="button waves-effect waves-light  btn">Edit</a>
+                <a href="{{ url_for('edit_recipe', recipes_id=recipe._id) }}" class="button waves-effect waves-light  btn">Edit</a>
                 <button data-target="modal1" class=" modal-trigger button waves-effect waves-light  btn">Delete</button>
 
                 <!-- Modal Structure -->

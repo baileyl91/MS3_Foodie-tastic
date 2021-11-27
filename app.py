@@ -131,6 +131,15 @@ def recipe(recipes_id):
         recipe=mongo.db.recipes.find_one({'_id': ObjectId(recipes_id)}))
 
 
+@app.route("/edit_recipe/<recipes_id>", methods=["GET", "POST"])
+def edit_recipe(recipes_id):
+    recipe = mongo.db.recipes.find_one({'_id': ObjectId(recipes_id)})
+
+    recipe = mongo.db.recipes.find().sort("recipe_name", 1)
+    return render_template("edit_recipe.html", recipes=recipe)
+    
+    
+
 
 if __name__ == "__main__":
     app.secret_key = 'super secret key'
