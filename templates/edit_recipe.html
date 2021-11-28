@@ -37,14 +37,14 @@
           </div>
           <div class="input-field col s12">
               
-            <textarea id="ingredients" name="ingredients"  minlength="5" maxlength="150" type="text" class="materialize-textarea validate" required>
+            <textarea id="ingredients" name="ingredients"  minlength="5"  type="text" class="materialize-textarea validate" required>
               {{- recipes.ingredients -}}
             </textarea>
             <label for="ingredients">Ingriedients:</label>
           </div>
           <div class="input-field col s12">
               
-            <textarea id="steps" name="steps" type="text" class="materialize-textarea validate" required>
+            <textarea id="steps" name="steps" minlength="5" type="text" class="materialize-textarea validate" required>
               {{- recipes.steps -}}
             </textarea>
             <label for="steps">Steps:</label>
