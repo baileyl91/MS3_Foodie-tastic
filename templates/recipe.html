@@ -24,14 +24,22 @@
                 <button type="button" class="collapsible ">Ingredients:</button>
                     <div class="content">
                         <ul>
-                            <li>{{recipe.ingredients}}</li>
+                            {% for line in recipe.ingredients %}
+                                <li class="ingredients-list">
+                                    {{ line[0]|upper}}{{line[1:] }}
+                                </li>
+                            {% endfor %}
                         </ul>
                     </div>
                 <button type="button" class="collapsible ">Cooking Steps:</button>
                     <div class="content">
-                        <ul>
-                            <li>{{- recipe.steps -}}</li>
-                        </ul>
+                        <ol>
+                            {% for line in recipe.steps %}
+                                <li>
+                                    {{ line[0]|upper}}{{line[1:] }}
+                                </li>
+                            {% endfor %}
+                        </ol>
                     </div>
 
                 {% if username == recipe.recipe_entered_by %}

@@ -4,7 +4,7 @@ from flask import (
     redirect, request, session, url_for)
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
-from flask_paginate import Pagination
+from flask_paginate import Pagination, get_page_args
 from werkzeug.security import generate_password_hash, check_password_hash
 if os.path.exists("env.py"):
     import env
@@ -131,8 +131,8 @@ def add_recipe():
             "cooking_time": request.form.get("cooking_time"),
             "image": request.form.get("image"),
             "description": request.form.get("description"),
-            "ingredients": request.form.getlist("ingredients"),
-            "steps": request.form.getlist("steps"),
+            "ingredients": request.form.get("ingredients").splitlines(),
+            "steps": request.form.get("steps").splitlines(),
             "created_by": session["user"]
         }
         mongo.db.recipes.insert_one(recipe)

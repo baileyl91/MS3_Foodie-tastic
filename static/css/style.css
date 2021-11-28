@@ -62,6 +62,8 @@ nav {
     color: black;
 }
 
+  
+
 .flashes h4{
     background-color: #FAF9F6;
     color: red;
@@ -110,5 +112,7 @@ nav {
     margin-left: 5px;
   }
   
-  
+  li.ingredients-list {
+    padding-left: 20px;
+  }
   
