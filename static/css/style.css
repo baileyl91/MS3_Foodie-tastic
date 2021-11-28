@@ -87,7 +87,7 @@ nav {
   }
   
   /* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
-  .active, .collapsible:hover {
+  .collapsible:hover {
     background-color: #104F55;
     color: white;
   }
@@ -110,8 +110,5 @@ nav {
     margin-left: 5px;
   }
   
-  .active:after {
-    content: "\2212";
-    color: white;
-  }
+  
   
