@@ -15,7 +15,12 @@
                     <p>Cooking Time: {{recipe.cooking_time}}</p>
                 </div>
                 <div class="col s12 m3 offset-m1">
-                    <img class="responsive-img display_image" src="{{recipe.image}}" alt="recipe image"></img>
+                    
+                    {% if recipe.image|length %}
+                <img class="responsive-img display_image" src={{ recipe.image }} alt="recipe image">
+                {% else %}
+          <img class="responsive-img display_image" src="../static/images/empty-plate.jpg" alt="image of empty plate">
+        {% endif %}
                 </div>
             
 <br>
