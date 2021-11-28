@@ -34,6 +34,7 @@ nav {
     padding-top: 20px;
 }
 
+
 .recipe {
     color: white;
     text-align: center;
@@ -59,4 +60,10 @@ nav {
 .pagination-container {
     text-align: center;
     color: black;
+}
+
+.flashes h4{
+    background-color: #FAF9F6;
+    color: red;
+    line-height: 2;
 }
