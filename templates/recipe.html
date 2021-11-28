@@ -18,7 +18,7 @@
                 {% if username == recipe.recipe_entered_by %}
                 {% endif %}
                 <a href="{{ url_for('edit_recipe', recipes_id=recipe._id) }}" class="button waves-effect waves-light  btn">Edit</a>
-                <button data-target="modal1" class=" modal-trigger button waves-effect waves-light  btn">Delete</button>
+                <button data-target="modal1" class=" modal-trigger button waves-effect waves-light red btn">Delete</button>
 
                 <!-- Modal Structure -->
                 <div id="modal1" class="modal">
