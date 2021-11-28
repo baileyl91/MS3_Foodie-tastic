@@ -33,7 +33,11 @@
             <div class="col s12 m3">
             <div class="card">
                 <div class="card-image">
+                    {% if recipes.image|length %}
                 <img src={{ recipes.image }}>
+                {% else %}
+          <img src="../static/images/empty-plate.jpg" alt="image of empty plate">
+        {% endif %}
                 <span class="card-title white-text teal darken-3 ">{{ recipes.recipe_name }}</span>
                 </div>
                 <div class="card-content">
@@ -51,7 +55,7 @@
   
 </div>
 
-<div class="container pagination-container center-align">
+<div class="container pagination center-align">
     {{ pagination.info }}
     {{ pagination.links }}
   </div>

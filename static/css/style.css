@@ -67,3 +67,7 @@ nav {
     color: red;
     line-height: 2;
 }
+
+.card-image {
+    height: 300px;
+}
