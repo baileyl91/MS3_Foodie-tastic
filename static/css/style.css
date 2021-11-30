@@ -40,29 +40,31 @@ nav {
     text-align: center;
 }
 
-.pagination-page-info {
-    padding: .6em;
-    padding-left: 0;
-    width: 40em;
-    margin: .5em;
-    margin-left: 0;
-    font-size: 12px;
-    color: white;
-    text-align: center;
-}
-.pagination-page-info b {
-    color: white;
-    padding-left: 2px;
-    padding: .1em .25em;
-    font-size: 150%;
-}
-
 .pagination-container {
+    background-color: red;
+    color: #fff;
     text-align: center;
-    color: black;
-}
-
+  }
   
+  .pagination {
+    width: fit-content;
+    margin: 0 auto;
+    
+  }
+  
+  .pagination li:not(.disabled) * {
+    color: #fff;
+  }
+  
+  .pagination li * {
+    color: white;
+    padding: 0 10px 0 10px;
+  }
+  
+  .pagination li.active {
+    background-color: red;
+    height: 50%;
+  }
 
 .flashes h4{
     background-color: #FAF9F6;
