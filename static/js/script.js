@@ -27,7 +27,7 @@ for (i = 0; i < coll.length; i++) {
 }
 
 //define template
-var template = $('#sections .section:first').clone();
+var field = $('#sections .section:first').clone();
 
 //define counter
 var sectionsCount = 1;
@@ -39,7 +39,7 @@ $('body').on('click', '.addsection', function() {
     sectionsCount++;
 
     //loop through each input
-    var section = template.clone().find(':input').each(function(){
+    var section = field.clone().find(':input').each(function(){
 
         //set id to store the updated section number
         var newId = this.id + sectionsCount;
@@ -59,6 +59,49 @@ $('body').on('click', '.addsection', function() {
 
 //remove section
 $('#sections').on('click', '.remove', function() {
+    //fade out section
+    $(this).parent().fadeOut(300, function(){
+        //remove parent element (main section)
+        $(this).parent();
+        return false;
+    });
+    return false;
+});
+
+
+//define template
+var template = $('#step-sections .step-section:first').clone();
+
+//define counter
+var stepSectionsCount = 1;
+
+//add new section
+$('body').on('click', '.addStep', function() {
+
+    //increment
+    stepSectionsCount++;
+
+    //loop through each input
+    var section = template.clone().find(':input').each(function(){
+
+        //set id to store the updated section number
+        var newId = this.id + stepSectionsCount;
+
+        //update for label
+        $(this).prev().attr('for', newId);
+
+        //update id
+        this.id = newId;
+
+    }).end()
+
+    //inject new section
+    .appendTo('#step-sections');
+    return false;
+});
+
+//remove section
+$('#step-sections').on('click', '.step-remove', function() {
     //fade out section
     $(this).parent().fadeOut(300, function(){
         //remove parent element (main section)
