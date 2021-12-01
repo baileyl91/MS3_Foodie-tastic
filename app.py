@@ -155,19 +155,29 @@ def recipe(recipes_id):
 
 @app.route("/edit_recipe/<recipes_id>", methods=["GET", "POST"])
 def edit_recipe(recipes_id):
-    if request.method == "POST":
-        edit = {
-            "recipe_name": request.form.get("recipe_name"),
-            "serves": request.form.get("serves"),
-            "cooking_time": request.form.get("cooking_time"),
-            "image": request.form.get("image"),
-            "description": request.form.get("description"),
-            "ingredients": request.form.get("ingredients").splitlines(),
-            "steps": request.form.get("steps").splitlines(),
-            "created_by": session["user"]
-        }
-        mongo.db.recipes.update({"_id": ObjectId(recipes_id)}, edit)
-        flash("Recipe Edited Successfully!")
+    if "user" in session:
+        user = session["user"]
+        recipes = mongo.db.recipes.find_one({"_id": ObjectId(recipes_id)})
+        if recipes["created_by"] == user:
+            if request.method == "POST":
+                edit = {
+                    "recipe_name": request.form.get("recipe_name"),
+                    "serves": request.form.get("serves"),
+                    "cooking_time": request.form.get("cooking_time"),
+                    "image": request.form.get("image"),
+                    "description": request.form.get("description"),
+                    "ingredients": request.form.get("ingredients").splitlines(),
+                    "steps": request.form.get("steps").splitlines(),
+                    "created_by": session["user"]
+                }
+                mongo.db.recipes.update({"_id": ObjectId(recipes_id)}, edit)
+                flash("Recipe Edited Successfully!")
+        else:
+            flash("Sorry, you are not allowed to do this")
+            return redirect(url_for("get_recipe"))
+    else:
+        flash("Sorry, you must log in")
+        return redirect(url_for("login"))
 
     recipe = mongo.db.recipes.find_one({'_id': ObjectId(recipes_id)})
     return render_template("edit_recipe.html", recipes=recipe)
