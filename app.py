@@ -162,7 +162,7 @@ def edit_recipe(recipes_id):
             "cooking_time": request.form.get("cooking_time"),
             "image": request.form.get("image"),
             "description": request.form.get("description"),
-             "ingredients": request.form.get("ingredients").splitlines(),
+            "ingredients": request.form.get("ingredients").splitlines(),
             "steps": request.form.get("steps").splitlines(),
             "created_by": session["user"]
         }

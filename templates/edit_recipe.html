@@ -38,7 +38,7 @@
           <div class="input-field col s12">
               
             <textarea id="ingredients" name="ingredients"  minlength="5"  type="text" class="materialize-textarea validate" required>
-              {{- recipes.ingredients -}}
+              {%- for line in recipes.ingredients -%}{{- line -}}&#10;{% endfor %}
             </textarea>
             <label for="ingredients">Ingriedients:</label>
           </div>
@@ -48,7 +48,7 @@
           <div class="input-field col s12">
               
             <textarea id="steps" name="steps" minlength="5" type="text" class="materialize-textarea validate" required>
-              {{- recipes.steps -}}
+              {%- for line in recipes.steps -%}{{- line -}}&#xa;{% endfor %}
             </textarea>
             <label for="steps">Steps:</label>
           </div>
