@@ -33,37 +33,19 @@
             <textarea id="description" name="description" minlength="5" maxlength="150" type="text" class="materialize-textarea validate" required></textarea>
             <label for="description">Description: </label>
           </div>
-
-          
-
-          <div class="input-field col s12 m8">
-            <div id="sections">
-              <div class="section">
-                <label for="ingredients">Ingredients: </label>
-                  <input name="ingredients" id="ingredients" minlength="5" maxlength="50" type="text" class="validate" required />    
-                  <button href="#" class='btn red remove right'>Remove</button>
-              </div>
-            </div>
-            <br>
-            <button href="#" class='addsection btn waves'>Add Ingredients:</button>
+          <div class="input-field col s12">
+            <textarea id="ingredients" name="ingredients"  minlength="5"  type="text" class="materialize-textarea validate" required></textarea>
+            <label for="ingredients">Ingredients:</label>
+            
           </div>
-
-          <div class="input-field col s12 ">
-            <div id="step-sections">
-              <div class="step-section">
-                <label for="steps">Steps: </label>
-                  <input name="steps" id="steps" minlength="5"  type="text" class="validate" required />    
-                  <button href="#" class='btn red step-remove right'>Remove</button>
-              </div>
-            </div>
-            <br>
-            <button href="#" class='addStep btn waves'>Add Steps:</button>
-          </div>
-          
 
         
           
-          <br>
+          <div class="input-field col s12">
+              
+            <textarea id="steps" name="steps" minlength="5" type="text" class="materialize-textarea validate" required></textarea>
+            <label for="steps">Steps:</label>
+          </div>
           <button class="btn waves-effect waves-light btn-large right" type="submit" name="action">Submit
             <i class="material-icons right">send</i>
           </button>
