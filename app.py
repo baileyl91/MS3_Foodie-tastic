@@ -175,9 +175,19 @@ def edit_recipe(recipes_id):
 
 @app.route("/delete_recipe/<recipes_id>")
 def delete_recipe(recipes_id):
-    mongo.db.recipes.remove({"_id": ObjectId(recipes_id)})
-    flash("Recipe Successfully Deleted")
-    return redirect(url_for("get_recipe"))
+    if "user" in session:
+        user = session["user"]
+        recipes = mongo.db.recipes.find_one({"_id": ObjectId(recipes_id)})
+        if recipes["created_by"] == user:
+                mongo.db.recipes.remove({"_id": ObjectId(recipes_id)})
+                flash("Recipe Successfully Deleted")
+        else:
+            flash("Sorry, you are not allowed to do this")
+            return redirect(url_for("get_recipe"))
+    else:
+        flash("Sorry, you must log in")
+        return redirect(url_for("login"))
+    return redirect(url_for("get_recipe")) 
 
 
 def search_recipes(offset=0, per_page=8):
