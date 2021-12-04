@@ -198,3 +198,10 @@ def delete_recipe(recipes_id):
 
 The problem was that it bypass it straight to “sorry, you must log in” as it does not check if the username is in session. But thanks to another student named Manni, he provided his own code on a similar feature. So I could compare, the problem was that the `username` needed to be `user` and it solved the issue.
 
+## Testing
+
+[Click here to see the testing documentation](TESTING.md)
+
+## Deployment
+
+## Credits
