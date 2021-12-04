@@ -205,3 +205,33 @@ The problem was that it bypass it straight to “sorry, you must log in” as it
 ## Deployment
 
 ## Credits
+
+**Code**
+
+To create Foodie-tastic!, I have relied heavily on Materialize framework content/tutorials.
+
+The authentication section of the application was adapted from the mini-project called ‘Task Manager’ on Code Insitute Course. 
+
+I also adapted the ‘CRUD’ and search functionality from the mini-project ‘Task Manager’.
+
+I would like to give credit to Manni on Slack for providing an idea to solve an issue I had when I wanted to only allow the user to delete or edit their own recipes but not recipes created by others. As explained in the issue section.
+
+I used stack overflow for help with [my pagination code](https://stackoverflow.com/questions/66734992/flask-paginate-per-page-not-changing-the-amount-of-visible-items).
+
+**Content**
+
+The home page content was written by me. 
+
+The recipes information such as name, description, ingredients, and steps was collected from BBC Good Foods. To demonstrate the potential of the web application, I wanted to have highly polished information and content. 
+
+**Media**
+
+The hero stock image was found on Unsplash and was created by [Spencer Davis](https://unsplash.com/photos/vJsj-hgOEG0)
+
+All images for each of the recipes cards are a URL link copied from [BBC Good Foods]()
+
+A backup image for the recipe cards if there is no URL link was found on Unsplash and was created by [name]()
+
+Acknowledgments
+
+Want to thank the Student Care and fellows students for their support. Also the tremendous community on the Slack channel.
