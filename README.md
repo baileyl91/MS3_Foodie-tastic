@@ -44,6 +44,8 @@ The site comprises two different shades of green with white text.
 The navbar and the footer would be a dark shade of green while the body is a light shade of green. 
 The recipe cards would have a background color of white and the delete buttons red to identify as a danger.
 
+![Colour Pallete](/static/image/readme/Pallete.png)
+
 **Typograpghy**
 
 The main font I have used is the ‘Poppins’ for its clean and minimal look with the backup font as sans-serif font if there were any problems using the first choice. 
@@ -251,6 +253,7 @@ The problem was that it bypass it straight to “sorry, you must log in” as it
     * Go back to the Heroku dashboard of your flask app, navigate to the "Settings" page.
     * Click on the "Reveal Config Vars" button, add environment variables in key-value pairs as below:
 
+
 | KEY           | VALUE                 |
 | ------------- |:--------------------: |
 | IP            | 0.0.0.0               |
@@ -258,6 +261,7 @@ The problem was that it bypass it straight to “sorry, you must log in” as it
 | SECRECT_KEY   | `<your secrect key>`  |
 | MONGO_URI     | mongodb+srv://<username>:<password>@<cluster_name>-ocous.mongodb.net/<database_name>?retryWrites=true&w=majority  |
 | MONGO_DBNAME  | `<database name>`     |
+
 
 6. Enable The Automatic Deployment
     * On the "Automatic Deploys" section, from our master/main branch click on "Enable Automatic Deployment".
