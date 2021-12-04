@@ -80,7 +80,7 @@ There are a number of features that have been implemented into the website which
 * Search bar 
 * Recipes card showing the full detail of a particular recipe
 
-Future Implementations
+**Future Implementations**
 
 There were a few more ideas that I had for the site that could be implemented in the future.
 
@@ -90,3 +90,53 @@ There were a few more ideas that I had for the site that could be implemented in
 * Accept images files as an alternative to URL links
 * User can delete their own account
 
+
+## Technology Used
+
+**Language Used**
+
+* HTML5
+* CSS3
+* JavaScript
+* Python
+
+**Frameworks, Libraries, and Programs Used**
+
+* [Google Font](https://fonts.google.com/)
+    * The font 'Poppins' was imported from Google Font.
+* [Font Awesome](https://fontawesome.com/)
+    * Used to get some icons for the site.
+* [Gitpod](https://www.gitpod.io/)
+    * Gitpod is the development environment used to develop the project.
+* [GitHub](https://github.com/)
+    * GitHub is used to store the code for the site.
+* [Git](https://git-scm.com/)
+    * Git was used as version control, to add, commit and push Git and GitHub.
+* [Balsamiq](https://balsamiq.com/)
+    * Used to create wireframes for the website.
+* [Google Developer Chrome Tools](https://developers.google.com/web/tools/chrome-devtools)
+    * Used to inspect elements of the page and debug any potential problems within the website.
+* [Unsplash](https://unsplash.com/)
+    * Used to get stock-free images for the project.
+* [Flask](https://flask.palletsprojects.com/en/2.0.x/)
+    * Used as an application framework
+* [Materialize](https://materializecss.com/)
+    * Used to create a responsive site.
+* [MongoDB](https://www.mongodb.com/)
+    * Used to create and store content as a database.
+* [jQuery](https://jquery.com/)
+    * Used to work with Materialize framework
+* [PyMongo](https://pypi.org/project/pymongo/)
+    * Used to work with MongoDB.
+* [Flask-PyMongo](https://pypi.org/project/Flask-PyMongo/)
+    * Used as a bridge to communicate between Flask and PyMongo.
+* [Flask-Paginate](https://pypi.org/project/flask-paginate/)
+    * Used to provide pagination functionality.
+* [Jinja](https://jinja.palletsprojects.com/)
+    * Used as a templating language for Python to display backend data to HTML.
+* [Werkzeug](https://werkzeug.palletsprojects.com/en/2.0.x/utils/#module-werkzeug.security)
+    * Used to get protection for passwords.
+* [Coolors](https://coolors.co/)
+    * Used to create a cohesive color scheme for the website.
+* [Heroku](https://www.heroku.com/)
+    * Used to deploy the website.
