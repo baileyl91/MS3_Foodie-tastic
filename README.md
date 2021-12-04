@@ -145,16 +145,16 @@ There were a few more ideas that I had for the site that could be implemented in
 
  There is a known issue with the footer that is not completely sticking to the bottom. As shown in the screenshot below:
 
-![Screenshot of issue with footer.](/static/image/readme/button-issue.png "Screenshot of footer issue.")
+![Screenshot of issue with footer.](static/image/readme/footer-issue.png "Screenshot of footer issue.")
 
 There is a known issue with the search bar buttons when viewed on mobile. 
 There is no spacing between the buttons. As shown in the screenshot below:
 
-![Button issue on mobile.](/image/sample.png "Button issue.")
+![Button issue on mobile.](static/image/readme/button-issue.png "Button issue.")
 
 This was solved by creating a row for just the buttons. 
 
-![Solved button issue on mobile.](/image/sample.png "Solved button issue.")
+![Solved button issue on mobile.](static/image/readme/solved-button-issue.png "Solved button issue.")
 
 As part of developing the site, wanted to create a live counter to display the number of recipes in the database as part of promoting the site on its home page.
 It displays incorrectly, therefore have decided to delete the code from the site.
