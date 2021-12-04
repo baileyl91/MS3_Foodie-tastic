@@ -315,6 +315,6 @@ All images for each of the recipes cards are a URL link copied from [BBC Good Fo
 
 A backup image for the recipe cards if there is no URL link was found on [Pexels](https://www.pexels.com/) and was created by [Kaboompics](https://www.pexels.com/photo/white-tableware-6305/)
 
-Acknowledgments
+**Acknowledgments**
 
 Want to thank the Student Care and fellows students for their support. Also the tremendous community on the Slack channel.
