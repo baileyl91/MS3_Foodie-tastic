@@ -140,3 +140,61 @@ There were a few more ideas that I had for the site that could be implemented in
     * Used to create a cohesive color scheme for the website.
 * [Heroku](https://www.heroku.com/)
     * Used to deploy the website.
+
+ ## Issues
+
+ There is a known issue with the footer that is not completely sticking to the bottom. As shown in the screenshot below:
+
+![Screenshot of issue with footer.](/static/image/readme/button-issue.png "Screenshot of footer issue.")
+
+There is a known issue with the search bar buttons when viewed on mobile. 
+There is no spacing between the buttons. As shown in the screenshot below:
+
+![Button issue on mobile.](/image/sample.png "Button issue.")
+
+This was solved by creating a row for just the buttons. 
+
+![Solved button issue on mobile.](/image/sample.png "Solved button issue.")
+
+As part of developing the site, wanted to create a live counter to display the number of recipes in the database as part of promoting the site on its home page.
+It displays incorrectly, therefore have decided to delete the code from the site.
+The code is shown below:
+
+In app.py
+```
+@app.route("/number")
+def number():
+   result = mongo.db.recipes.find().count()
+   return result
+```
+
+In home.html page
+```
+{{ url_for('number') }}
+```
+
+It displays as “/number” instead of an actual number of recipes.
+
+As part of developing the site, I wanted to limit what the user can edit or delete a recipe.
+The user can only edit or delete their own recipes but not of other recipes created by other users. I wanted to check if the username is in session and if the recipe is created by said username, the user can delete/edit. If they are not logged in or the recipe is not created by the said username, it does not authorize the user to delete. The code is shown below, 
+
+```
+@app.route("/delete_recipe/<recipes_id>")
+def delete_recipe(recipes_id):
+   if "username" in session:
+       user = session["username"]
+       recipes = mongo.db.recipes.find_one({"_id": ObjectId(recipes_id)})
+       if recipes["created_by"] == user:
+               mongo.db.recipes.remove({"_id": ObjectId(recipes_id)})
+               flash("Recipe Successfully Deleted")
+       else:
+           flash("Sorry, you are not allowed to do this")
+           return redirect(url_for("get_recipe"))
+   else:
+       flash("Sorry, you must log in")
+       return redirect(url_for("login"))
+   return redirect(url_for("get_recipe"))
+```
+
+The problem was that it bypass it straight to “sorry, you must log in” as it does not check if the username is in session. But thanks to another student named Manni, he provided his own code on a similar feature. So I could compare, the problem was that the `username` needed to be `user` and it solved the issue.
+

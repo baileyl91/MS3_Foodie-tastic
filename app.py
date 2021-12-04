@@ -203,7 +203,7 @@ def delete_recipe(recipes_id):
     else:
         flash("Sorry, you must log in")
         return redirect(url_for("login"))
-return redirect(url_for("get_recipe"))
+    return redirect(url_for("get_recipe"))
 
 
 def search_recipes(offset=0, per_page=8):
