@@ -42,7 +42,8 @@ def home():
 @app.route("/register", methods=["GET", "POST"])
 def register():
     if request.method == "POST":
-        existing_user = mongo.db.users.find_one({"username": request.form.get("username").lower()})
+        existing_user = mongo.db.users.find_one(
+            {"username": request.form.get("username").lower()})
 
         if existing_user:
             flash("Username already exists")
@@ -64,10 +65,12 @@ def register():
 @app.route("/login", methods=["GET", "POST"])
 def login():
     if request.method == "POST":
-        existing_user = mongo.db.users.find_one({"username": request.form.get("username").lower()})
+        existing_user = mongo.db.users.find_one(
+            {"username": request.form.get("username").lower()})
 
         if existing_user:
-            if check_password_hash(existing_user["password"], request.form.get("password")):
+            if check_password_hash(existing_user["password"],
+                                   request.form.get("password")):
                 session["user"] = request.form.get("username").lower()
                 flash("Welcome, {}".format(request.form.get("username")))
                 return redirect(url_for("profile", username=session["user"]))
@@ -105,7 +108,7 @@ def logout():
 @app.route("/get_recipe")
 def get_recipe():
     recipe = list(mongo.db.recipes.find())
-   # Pagination
+    # Pagination
     # pylint: disable=unbalanced-tuple-unpacking
     # page, per_page, offset = get_page_args(page_parameter='page',
     #                                        per_page_parameter='per_page')
@@ -118,7 +121,9 @@ def get_recipe():
     total = len(recipe)
     pagination_recipes = collection(recipe, offset=offset, per_page=8)
     pagination = Pagination(page=page, per_page=8, total=total)
-    return render_template("recipes_collection.html", recipes=pagination_recipes, page=page, per_page=per_page, pagination=pagination)
+    return render_template("recipes_collection.html",
+                           recipes=pagination_recipes, page=page,
+                           per_page=per_page, pagination=pagination)
 
 
 @app.route("/add_recipe", methods=["GET", "POST"])
@@ -137,7 +142,6 @@ def add_recipe():
         mongo.db.recipes.insert_one(recipe)
         flash("Recipe Added Successfully!")
         return redirect(url_for("get_recipe"))
-    
     recipe = mongo.db.recipes.find().sort("recipe_name", 1)
     return render_template("add_recipe.html", recipes=recipe)
 
@@ -146,10 +150,12 @@ def add_recipe():
 def recipe(recipes_id):
     if 'username' in session:
         return render_template('recipe.html', username=session['username'],
-        recipe=mongo.db.recipes.find_one({'_id': ObjectId(recipes_id)}))
+                               recipe=mongo.db.recipes.find_one(
+                                   {'_id': ObjectId(recipes_id)}))
     else:
         return render_template('recipe.html', username='',
-        recipe=mongo.db.recipes.find_one({'_id': ObjectId(recipes_id)}))
+                               recipe=mongo.db.recipes.find_one(
+                                   {'_id': ObjectId(recipes_id)}))
 
 
 @app.route("/edit_recipe/<recipes_id>", methods=["GET", "POST"])
@@ -165,7 +171,8 @@ def edit_recipe(recipes_id):
                     "cooking_time": request.form.get("cooking_time"),
                     "image": request.form.get("image"),
                     "description": request.form.get("description"),
-                    "ingredients": request.form.get("ingredients").splitlines(),
+                    "ingredients": request.form.get
+                    ("ingredients").splitlines(),
                     "steps": request.form.get("steps").splitlines(),
                     "created_by": session["user"]
                 }
@@ -196,7 +203,7 @@ def delete_recipe(recipes_id):
     else:
         flash("Sorry, you must log in")
         return redirect(url_for("login"))
-    return redirect(url_for("get_recipe")) 
+return redirect(url_for("get_recipe"))
 
 
 def search_recipes(offset=0, per_page=8):
@@ -223,17 +230,13 @@ def search():
     total = len(recipes)
     pagination_recipes = search_recipes(offset=offset, per_page=8)
     pagination = Pagination(page=page, per_page=8, total=total)
-    
     return render_template(
         "recipes_collection.html", recipes=pagination_recipes,
         page=page, per_page=per_page, pagination=pagination)
 
 
-
-
 if __name__ == "__main__":
     app.secret_key = 'super secret key'
-    
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),
             debug=True)
