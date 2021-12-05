@@ -125,7 +125,7 @@ After I added the missing img alt attribute, the result slighty improved.
     * Clicked on 'edit' button, it redirect me to the edit form page as it was created by 'Luke1234'
     * On edit recipe page, I can see the data for each section. 
     * Edit to add a new ingredients 'sour cream' and click 'Edit Recipe'
-    * Recieved a successful flash message and then clicked on 'cancel' button, redurect me to the collection of recipes.
+    * Recieved a successful flash message and then clicked on 'cancel' button, redirect me to the collection of recipes.
     * Clicked on 'Fish and Chips' created by user 'lisa1234'
     * Clicked on 'edit', a flash message appears "sorry, you are not allowed to do this"
     * Re-clicked on 'Fish and Chips' recipe, click on 'delete' button, flash message appears ""sorry, you are not allowed to do this"
@@ -137,4 +137,20 @@ After I added the missing img alt attribute, the result slighty improved.
     * Click on 'Log Out', flash message appears "You have been logged out"
 
 2. Logged in as 'admin'
-    *
+    * Can clearly see my own profile page.
+    * Click on 'recipes' in the navbar and it redirect me to a new page.
+    * See a collection of recipes.
+    * Clicked on 'Chicken Fajitas' recipe created by the user 'Luke1234', redirects me to a new page.
+    * Can see the recipe in full detail with 'edit', 'delete' and 'back' button.
+    * Clicked on 'edit' button, it redirect me to the edit form page as it was created by 'Luke1234' but as a admin user can access any recipe
+    * On edit recipe page, I can see the data for each section. 
+    * Edit to add a new ingredients 'cheese' and click 'Edit Recipe'
+    * Recieved a successful flash message and then clicked on 'cancel' button, redirect me to the collection of recipes.
+    * Clicked on 'Fish and Chips' created by user 'lisa1234'
+    * Click on 'delete' button, flash message appears ""successfully delete recipe"
+    * Clicked on add recipe and added '3-veg mac 'n' cheese' into the form, clicked on 'submit'
+    * Flash message appears, successfully added recipe.
+    * Using search bar, typed in 'cheese', the new recipe pasta successfully appears 
+    * Click on recipe to see in full detail
+    * All information supplied is now shown in recipe
+    * Click on 'Log Out', flash message appears "You have been logged out"
