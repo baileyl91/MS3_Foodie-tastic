@@ -29,6 +29,7 @@ def collection(recipes, offset=0, per_page=8):
     return recipes[offset: offset + per_page]
 
 
+# Adpated from Code Institute 'Task Manager' mini-project
 @app.route("/")
 @app.route("/home")
 def home():
@@ -39,6 +40,7 @@ def home():
     return render_template("home.html", quotes=quotes)
 
 
+# Adpated from Code Institute 'Task Manager' mini-project
 @app.route("/register", methods=["GET", "POST"])
 def register():
     if request.method == "POST":
@@ -62,6 +64,7 @@ def register():
     return render_template("register.html")
 
 
+# Adpated from Code Institute 'Task Manager' mini-project
 @app.route("/login", methods=["GET", "POST"])
 def login():
     if request.method == "POST":
@@ -85,6 +88,7 @@ def login():
     return render_template("login.html")
 
 
+# Adpated from Code Institute 'Task Manager' mini-project
 @app.route("/profile/<username>", methods=["GET", "POST"])
 def profile(username):
     # grab the session user's username from db
@@ -97,6 +101,7 @@ def profile(username):
     return redirect(url_for("login"))
 
 
+# Adpated from Code Institute 'Task Manager' mini-project
 @app.route("/logout")
 def logout():
     # remove user from session cookie
@@ -126,6 +131,7 @@ def get_recipe():
                            per_page=per_page, pagination=pagination)
 
 
+# Adpated from Code Institute 'Task Manager' mini-project
 @app.route("/add_recipe", methods=["GET", "POST"])
 def add_recipe():
     if request.method == "POST":
@@ -158,11 +164,14 @@ def recipe(recipes_id):
                                    {'_id': ObjectId(recipes_id)}))
 
 
+# Adpated from Code Institute 'Task Manager' mini-project
+# Had help from student name Manni in Slack
 @app.route("/edit_recipe/<recipes_id>", methods=["GET", "POST"])
 def edit_recipe(recipes_id):
     if "user" in session:
         user = session["user"]
         recipes = mongo.db.recipes.find_one({"_id": ObjectId(recipes_id)})
+        # check if recipe is created by the user 
         if recipes["created_by"] == user or session["user"] == "admin":
             if request.method == "POST":
                 edit = {
@@ -179,6 +188,7 @@ def edit_recipe(recipes_id):
                 mongo.db.recipes.update({"_id": ObjectId(recipes_id)}, edit)
                 flash("Recipe Edited Successfully!")
         else:
+            # if the user did not create the recipe
             flash("Sorry, you are not allowed to do this")
             return redirect(url_for("get_recipe"))
     else:
@@ -189,15 +199,18 @@ def edit_recipe(recipes_id):
     return render_template("edit_recipe.html", recipes=recipe)
 
 
+# Adpated from Code Institute 'Task Manager' mini-project
 @app.route("/delete_recipe/<recipes_id>")
 def delete_recipe(recipes_id):
     if "user" in session:
         user = session["user"]
         recipes = mongo.db.recipes.find_one({"_id": ObjectId(recipes_id)})
+        # check if recipe is created by the user 
         if recipes["created_by"] == user or session["user"] == "admin":
                 mongo.db.recipes.remove({"_id": ObjectId(recipes_id)})
                 flash("Recipe Successfully Deleted")
         else:
+            # if the user did not create the recipe
             flash("Sorry, you are not allowed to do this")
             return redirect(url_for("get_recipe"))
     else:
@@ -206,12 +219,14 @@ def delete_recipe(recipes_id):
     return redirect(url_for("get_recipe"))
 
 
+# Adpated from Code Institute 'Task Manager' mini-project
 def search_recipes(offset=0, per_page=8):
     query = request.form.get("query")
     recipes = list(mongo.db.recipes.find({"$text": {"$search": query}}))
     return recipes[offset: offset + per_page]
 
 
+# Adpated from Code Institute 'Task Manager' mini-project
 @app.route("/search", methods=["GET", "POST"])
 def search():
     """

@@ -1,16 +1,24 @@
+/* 
+The following code was taken from Materialize CSS to allow certain function to work
+*/
+
+// Dropdown Menu
 $(document).ready(function(){
   $(".dropdown-trigger").dropdown();
       
 });
 
+// Parallax Image 
 $(document).ready(function(){
   $('.parallax').parallax();
 });
 
+// Pop up Modal
 $(document).ready(function(){
   $('.modal').modal();
 });
 
+// Collapsible 
 var coll = document.getElementsByClassName("collapsible");
 var i;
 

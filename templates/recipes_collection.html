@@ -1,14 +1,14 @@
 {% extends "base.html" %}
 {% block content %}
 
+<!-- Show a collection of recipes -->
+
 <h3 class="recipe">Recipe Collection</h3>
 
-
-
-
+<!-- Search bar -->
 <div class="container">
-
     <div class="row card-panel grey lighten-5">
+        <!-- Search bar, adapted from Code Institute 'Task Manager' mini project-->
         <form action="{{ url_for('search') }}" method="post" class="col s12">
             <div class="row valign-wrapper center-align">
                 <div class="input-field col s12 m12 l12">
@@ -21,52 +21,54 @@
                 <div class="col s12">
                     <a href="{{ url_for('get_recipe') }}" class="red btn">Reset</a>
                     <button type="submit" class="teal darken-1 btn">
-                        <i class="fas fa-search left"></i>Search
+                    <i class="fas fa-search left"></i>Search
                     </button>
                 </div>
             </div>
-            
         </form>
     </div>
     
+    <!-- Recipes Cards, adapted from Materialize CSS Cards -->
+    <!-- Read in data from MONGO Database-->
     {% if recipes|length > 0 %}
-
+    <!-- Repeat for each recipe in database -->
     <div class="row">
         {% for recipes in recipes %}
             <div class="col s12 m4 l3">
-            <div class="card">
-                <div class="card-image">
-                    {% if recipes.image|length %}
-                <img src={{ recipes.image }} alt="image of recipe">
-                {% else %}
-          <img src="../static/images/empty-plate.jpg" alt="image of empty plate">
-        {% endif %}
-                <span class="card-title white-text teal darken-3 ">{{ recipes.recipe_name }}</span>
+                <div class="card">
+                    <div class="card-image">
+                        {% if recipes.image|length %}
+                            <img src={{ recipes.image }} alt="image of recipe">
+                        {% else %}
+                            <!-- Back up image if there no URL link provided -->
+                            <img src="../static/images/empty-plate.jpg" alt="image of empty plate">
+                        {% endif %}
+                            <span class="card-title white-text teal darken-3 ">{{ recipes.recipe_name }}</span>
+                    </div>
+                    <div class="card-content">
+                        <p>Cooking Time: {{ recipes.cooking_time }}</p>
+                        <p>Serves: {{ recipes.serves }}</p>
+                        <p>by: {{ recipes.created_by }}</p>
+                    </div>
+
+                    <div class="card-action">
+                        <a href="{{url_for('recipe', recipes_id=recipes._id)}}">See full recipe:</a>
+                    </div>
                 </div>
-                <div class="card-content">
-                <p>Cooking Time: {{ recipes.cooking_time }}</p>
-                    <p>Serves: {{ recipes.serves }}</p>
-                    <p>by: {{ recipes.created_by }}</p>
-                </div>
-                <div class="card-action">
-                <a href="{{url_for('recipe', recipes_id=recipes._id)}}">See full recipe:</a>
-                </div>
-            </div>
             </div>
         {% endfor %}
     </div>
-  
 </div>
 
+<!-- Pagination Links -->
 <div class="container pagination">
     {{ pagination.links }}
-  </div>
-  <br>
+</div>
+<br>
 
+<!-- If there no recipe in collection -->
 {% else %}
-<h3 class="recipe">No Results Found</h3>
+    <h3 class="recipe">No Results Found</h3>
 {% endif %}
-
-
 
 {% endblock %}

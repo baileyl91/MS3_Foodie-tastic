@@ -1,6 +1,8 @@
 {% extends "base.html" %}
 {% block content %}
 
+<!-- Add recipe forms, adapted from Code Institude 'Task Manager' mini project-->
+
     <h3 class=" white-text center"> Add Recipe</h3>
 
     <div class="container white">
@@ -8,38 +10,46 @@
         <form class="col s12" method="POST" >
           <div class="row">
             <div class="input-field col s12">
+              <!-- Ask for recipe name -->
               <input id="recipe_name" name="recipe_name" minlength="5" maxlength="50" type="text" class="validate" required>
               <label for="recipe_name">Recipe Name: </label>
             </div>
             <div class="input-field col s6">
+                <!-- Ask for how many it serves-->
                 <input id="serves" name="serves" minlength="1" maxlength="2" type="text" class="validate" required>
                 <label for="serves">Serves: </label>
             </div>
             <div class="input-field col s6">
+                <!-- Ask for how long it takes-->
                 <input id="cooking_time" name="cooking_time" type="text" class="validate" required>
                 <label for="cooking_time" >Cooking Time: </label>
             </div>
             <div class="input-field col s12">  
+              <!-- Ask for image URL link, however if there no link, site provide back up image -->
               <input id="image" name="image" type="text" class="validate">
               <label for="image">Image Link (URL)</label>
             </div>
             <div class="input-field col s12">
+              <!-- Ask for description of the recipe -->
               <textarea id="description" name="description" minlength="5" maxlength="150" class="materialize-textarea validate" required></textarea>
               <label for="description">Description: </label>
             </div>
             <div class="input-field col s12">
+              <!-- Ask for ingredients to amke the recipe -->
               <textarea id="ingredients" name="ingredients"  minlength="5"  class="materialize-textarea validate" required></textarea>
               <label for="ingredients">Ingredients:</label>
             </div>
             <div class="input-field col s12">
+              <!-- Ask for steps to cokk recipe-->
               <textarea id="steps" name="steps" minlength="5"  class="materialize-textarea validate" required></textarea>
               <label for="steps">Steps:</label>
             </div>
+            <!-- Submit button to add recipe to database -->
             <button class="btn waves-effect waves-light btn-large right" type="submit" name="action">Submit
               <i class="material-icons right">send</i>
             </button>
-        </div>
-      </form>
+          </div>
+        </form>
       </div>
     </div>
       

@@ -1,3 +1,4 @@
+/* Setting the body style */
 body {
     background-color: #32746D;
     display: flex;
@@ -5,41 +6,47 @@ body {
     flex-direction: column;
 }
 
+/* Keep footer at bottom */
 main {
     flex: 1 0 auto;
   }
 
+/* Navbar styling */
 nav {
     background-color: #1F4743;
     color: white;
 }
 
+/* Logo Styling */
 .brand-logo {
     color: white;
     margin-left: 10px;
 }
 
+/* Menu Styling */
 .mobile-menu {
     margin-right: 15px;
 }
 
+/* Footer */
 .footer-copyright {
     background-color: #1F4743;
     color: white;
 }
 
+/* Social media links */
 .social {
     color: white;
     padding-right: 15px;
     padding-top: 20px;
 }
 
-
 .recipe {
     color: white;
     text-align: center;
 }
 
+/* Pagination */
 .pagination-container {
     background-color: red;
     color: #fff;
@@ -66,12 +73,14 @@ nav {
     height: 50%;
   }
 
+/* Style of flash messages */
 .flashes h2{
     background-color: #FAF9F6;
     color: red;
     line-height: 2;
 }
 
+/* Height of image in card */
 .card-image {
     height: 300px;
 }
@@ -114,6 +123,7 @@ nav {
     margin-left: 5px;
   }
   
+  /* Spacing for list of ingredients */
   li.ingredients-list {
     padding-left: 20px;
   }

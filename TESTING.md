@@ -147,9 +147,9 @@ After I added the missing img alt attribute, the result slighty improved.
     * Edit to add a new ingredients 'cheese' and click 'Edit Recipe'
     * Recieved a successful flash message and then clicked on 'cancel' button, redirect me to the collection of recipes.
     * Clicked on 'Fish and Chips' created by user 'lisa1234'
-    * Click on 'delete' button, flash message appears ""successfully delete recipe"
+    * Click on 'delete' button, flash message appears ""Recipe Successfully Deleted"
     * Clicked on add recipe and added '3-veg mac 'n' cheese' into the form, clicked on 'submit'
-    * Flash message appears, successfully added recipe.
+    * Flash message appears, successfully added recipe.git 
     * Using search bar, typed in 'cheese', the new recipe pasta successfully appears 
     * Click on recipe to see in full detail
     * All information supplied is now shown in recipe

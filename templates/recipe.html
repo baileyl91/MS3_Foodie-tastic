@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
 
-
+<!-- Full Recipe Details -->
 <h3 class="recipe">Recipe</h3>
 
 <div class="container">
@@ -15,20 +15,20 @@
                     <p>Cooking Time: {{recipe.cooking_time}}</p>
                 </div>
                 <div class="col s12 m3 offset-m1">
-                    
                     {% if recipe.image|length %}
-                <img class="responsive-img display_image" src={{ recipe.image }} alt="recipe image">
-                {% else %}
-          <img class="responsive-img display_image" src="../static/images/empty-plate.jpg" alt="image of empty plate">
-        {% endif %}
+                        <img class="responsive-img display_image" src={{ recipe.image }} alt="recipe image">
+                    {% else %}
+                        <!-- back up image if there no URL link provided -->
+                        <img class="responsive-img display_image" src="../static/images/empty-plate.jpg" alt="image of empty plate">
+                    {% endif %}
                 </div>
-            
-<br>
-                
+                <br>
 
+                <!-- Code adapted from Materialize CSS Collapsible -->
                 <button type="button" class="collapsible ">Ingredients:</button>
                     <div class="content">
                         <ul>
+                            <!-- Get data from MONGO Database, split into each line -->
                             {% for line in recipe.ingredients %}
                                 <li class="ingredients-list">
                                     {{ line[0]|upper}}{{line[1:] }}
@@ -39,6 +39,7 @@
                 <button type="button" class="collapsible ">Cooking Steps:</button>
                     <div class="content">
                         <ol>
+                            <!-- Get data from MONGO Database, split into each line -->
                             {% for line in recipe.steps %}
                                 <li>
                                     {{ line[0]|upper}}{{line[1:] }}
@@ -49,12 +50,14 @@
 
                 {% if username == recipe.recipe_entered_by %}
                 {% endif %}
-
+                
+                <!-- Collection of 'edit', 'delete' and 'back' buttons-->
                 <a href="{{ url_for('edit_recipe', recipes_id=recipe._id) }}" class="button waves-effect waves-light  btn">Edit</a>
+                <!-- Modal pop up for delete button, code adapted from Materialize CSS Modal-->
                 <button data-target="modal1" class=" modal-trigger button waves-effect waves-light red btn">Delete</button>
                 <a href="{{ url_for('get_recipe') }}" class="button waves-effect waves-light  btn right">Back</a>
 
-                <!-- Modal Structure -->
+                <!-- Modal Structure for delete button-->
                 <div id="modal1" class="modal center">
                     <div class="modal-content">
                         <h4>Delete</h4>

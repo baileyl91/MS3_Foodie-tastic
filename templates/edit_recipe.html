@@ -1,67 +1,69 @@
 {% extends "base.html" %}
 {% block content %}
 
+    <!-- Edit recipe forms, adapted from Code Institude 'Task Manager' mini project-->
     <h3 class=" white-text center"> Edit Recipe</h3>
 
     <div class="container white">
-    <div class="row card-panel grey lighten-5">
-        <form class="col s12" method="POST" action="{{ url_for('edit_recipe', recipes_id=recipes._id) }}">
-          <div class="row">
-            <div class="input-field col s12">
-              
-              <input id="recipe_name" name="recipe_name" minlength="5" maxlength="50" value="{{ recipes.recipe_name }}" type="text" class="validate" required>
-              <label for="recipe_name">Recipe Name: </label>
-            </div>
-            <div class="input-field col s6">
-              
+      <div class="row card-panel grey lighten-5">
+          <form class="col s12" method="POST" action="{{ url_for('edit_recipe', recipes_id=recipes._id) }}">
+            <div class="row">
+              <div class="input-field col s12">
+                <!-- Edit recipe name -->
+                <input id="recipe_name" name="recipe_name" minlength="5" maxlength="50" value="{{ recipes.recipe_name }}" type="text" class="validate" required>
+                <label for="recipe_name">Recipe Name: </label>
+              </div>
+              <div class="input-field col s6">
+                <!-- Edit how many it serves -->
                 <input id="serves" name="serves" minlength="1" maxlength="2" value="{{ recipes.serves }}" type="text" class="validate" required>
                 <label for="serves">Serves: </label>
-            </div>
-            <div class="input-field col s6">
-              
+              </div>
+              <div class="input-field col s6">
+                <!-- Edit how long it takes-->
                 <input id="cooking_time" name="cooking_time" value="{{ recipes.cooking_time }}" type="text" class="validate" required>
                 <label for="cooking_time" >Cooking Time: </label>
               </div>
-          
-          <div class="input-field col s12">
-              
-            <input id="image" name="image" value="{{ recipes.image }}" type="text" class="validate">
-            <label for="image">Image Link (URL)</label>
-          </div>
-          <div class="input-field col s12">
-              
-            <textarea id="description" name="description" minlength="5" maxlength="150" type="text" class="materialize-textarea validate" required>
-              {{- recipes.description -}}
-            </textarea>
-            <label for="description">Description: </label>
-          </div>
-          <div class="input-field col s12">
-              
-            <textarea id="ingredients" name="ingredients"  minlength="5"  type="text" class="materialize-textarea validate" required>
-              {%- for line in recipes.ingredients -%}{{- line -}}&#10;{% endfor %}
-            </textarea>
-            <label for="ingredients">Ingriedients:</label>
-          </div>
-
-
-          
-          <div class="input-field col s12">
-              
-            <textarea id="steps" name="steps" minlength="5" type="text" class="materialize-textarea validate" required>
-              {%- for line in recipes.steps -%}{{- line -}}&#xa;{% endfor %}
-            </textarea>
-            <label for="steps">Steps:</label>
-          </div>
-          <!-- cancel button -->
-          <a href="{{ url_for('get_recipe') }}" class="btn-large red right">
-            Cancel <i class="fas fa-times-circle right"></i>
-        </a>
-          <button class="btn waves-effect waves-light btn-large left" type="submit" name="action">Edit Recipe 
-              <i class="fas fa-edit right"></i>
-          </button>
-        </form>
+              <div class="input-field col s12">
+                <!-- Edit it image URL link -->
+                <input id="image" name="image" value="{{ recipes.image }}" type="text" class="validate">
+                <label for="image">Image Link (URL)</label>
+              </div>
+              <div class="input-field col s12">
+                <!-- Edit it description -->
+                <textarea id="description" name="description" minlength="5" maxlength="150" type="text" class="materialize-textarea validate" required>
+                  <!-- Read in description from database -->
+                  {{- recipes.description -}}
+                </textarea>
+                <label for="description">Description: </label>
+              </div>
+              <div class="input-field col s12">
+                <!-- Edit it ingredients -->
+                <textarea id="ingredients" name="ingredients"  minlength="5"  type="text" class="materialize-textarea validate" required>
+                  <!-- Read in ingredients from the database -->
+                  {%- for line in recipes.ingredients -%}{{- line -}}&#10;{% endfor %}
+                </textarea>
+                <label for="ingredients">Ingriedients:</label>
+              </div>
+              <div class="input-field col s12">
+                <!-- Edit steps -->
+                <textarea id="steps" name="steps" minlength="5" type="text" class="materialize-textarea validate" required>
+                  <!-- Read in steps from database -->
+                  {%- for line in recipes.steps -%}{{- line -}}&#xa;{% endfor %}
+                </textarea>
+                <label for="steps">Steps:</label>
+              </div>
+              <!-- cancel button -->
+              <a href="{{ url_for('get_recipe') }}" class="btn-large red right">
+                Cancel <i class="fas fa-times-circle right"></i>
+              </a>
+              <!-- Edit Button, save to database-->
+              <button class="btn waves-effect waves-light btn-large left" type="submit" name="action">Edit Recipe 
+                  <i class="fas fa-edit right"></i>
+              </button>
+            </div>
+          </form>
       </div>
-      </div>
-      </div>
+    </div>
+      
 
 {% endblock %}
