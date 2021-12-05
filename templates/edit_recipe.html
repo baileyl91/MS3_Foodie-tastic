@@ -30,24 +30,24 @@
               </div>
               <div class="input-field col s12">
                 <!-- Edit it description -->
+                <!-- Read in description from database -->
                 <textarea id="description" name="description" minlength="5" maxlength="150" type="text" class="materialize-textarea validate" required>
-                  <!-- Read in description from database -->
                   {{- recipes.description -}}
                 </textarea>
                 <label for="description">Description: </label>
               </div>
               <div class="input-field col s12">
                 <!-- Edit it ingredients -->
+                <!-- Read in ingredients from the database -->
                 <textarea id="ingredients" name="ingredients"  minlength="5"  type="text" class="materialize-textarea validate" required>
-                  <!-- Read in ingredients from the database -->
                   {%- for line in recipes.ingredients -%}{{- line -}}&#10;{% endfor %}
                 </textarea>
                 <label for="ingredients">Ingriedients:</label>
               </div>
               <div class="input-field col s12">
                 <!-- Edit steps -->
+                <!-- Read in steps from database -->
                 <textarea id="steps" name="steps" minlength="5" type="text" class="materialize-textarea validate" required>
-                  <!-- Read in steps from database -->
                   {%- for line in recipes.steps -%}{{- line -}}&#xa;{% endfor %}
                 </textarea>
                 <label for="steps">Steps:</label>
