@@ -1,5 +1,6 @@
 /* Setting the body style */
 body {
+    font-family: 'Poppins', sans-serif;
     background-color: #32746D;
     display: flex;
     min-height: 100vh;
