@@ -64,6 +64,9 @@ There are only two databases in the collection, named:
 
 **Wireframes**
 
+* [Desktop Wireframe](static/wireframes/Desktop-wireframe.png)
+* [Mobile Wireframe](static/wireframes/Mobile-wireframe.png)
+
 ## Features
 
 There are a number of features that have been implemented into the website which are:
